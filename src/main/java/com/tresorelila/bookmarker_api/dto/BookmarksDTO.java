@@ -31,4 +31,23 @@ public class BookmarksDTO {
         this.setHasNext(bookmarkPage.hasNext());
         this.setHasPrevious(bookmarkPage.hasPrevious());
     }
+
+    public BookmarksDTO(List<BookmarkDTO> data,
+                        long totalElements,
+                        int totalPages,
+                        int currentPage,
+                        boolean isFirst,
+                        boolean isLast,
+                        boolean hasNext,
+                        boolean hasPrevious) {
+        this.data = data;
+        this.totalElements = totalElements;
+        this.totalPages = totalPages;
+        this.currentPage = currentPage;
+        this.isFirst = isFirst;
+        this.isLast = isLast;
+        this.hasNext = hasNext;
+        this.hasPrevious = hasPrevious;
+    }
+
 }

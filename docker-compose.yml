@@ -27,5 +27,22 @@ services:
     depends_on:
       - db
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile   # celui qui copie app.jar et lance java -jar
+    container_name: app
+    ports:
+      - "8080:8080"            # ton app Spring Boot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bookmarker
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      # optionnel si tu utilises Spring Boot 3.x avec Flyway/Hibernate:
+      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      db:
+        condition: service_healthy   # attend que Postgres soit "healthy" avant de démarrer
+
 volumes:
   pgdata:
