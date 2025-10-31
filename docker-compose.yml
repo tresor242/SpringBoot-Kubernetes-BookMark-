@@ -30,10 +30,10 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile   # celui qui copie app.jar et lance java -jar
+      dockerfile: Dockerfile   
     container_name: app
     ports:
-      - "8080:8080"            # ton app Spring Boot
+      - "8080:8080"            
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/bookmarker
       SPRING_DATASOURCE_USERNAME: postgres
@@ -42,7 +42,7 @@ services:
       # SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       db:
-        condition: service_healthy   # attend que Postgres soit "healthy" avant de démarrer
+        condition: service_healthy   
 
 volumes:
   pgdata:
