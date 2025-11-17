@@ -24,6 +24,13 @@ public class BookmarkController {
         return bookmarkService.searchBookmarks(query, page);
     }
 
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
+
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BookmarkDTO createBookmark(@RequestBody @Valid CreateBookmarkRequest request) {
